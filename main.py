@@ -22,10 +22,14 @@ def ensure_output_dir(path):
     os.makedirs(path, exist_ok=True)
 
 
+def write_entry(path, text):
+    with open(path, "w", encoding="utf-8", newline="\n") as handle:
+        handle.write(text + "\n")
+
+
 def main():
     ensure_output_dir(OUTPUT_DIR)
-    with open(OUTPUT_FILE, "w", encoding="utf-8", newline="\n") as handle:
-        handle.write(JOKE + "\n")
+    write_entry(OUTPUT_FILE, JOKE)
     return 0
 
 
